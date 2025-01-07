@@ -1,4 +1,3 @@
-// src/App.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,37 +9,81 @@ export const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name && password) {
-      setMessage(`名前: ${name}, 合言葉: ${password}`);
-      navigate(`/chat?name=${name}&password=${password}`);
+
+    // Trim inputs to avoid unnecessary spaces
+    const trimmedName = name.trim();
+    const trimmedPassword = password.trim();
+
+    if (trimmedName && trimmedPassword) {
+      // If both inputs are valid, navigate to Chat page with query parameters
+      navigate(
+        `/chat?name=${encodeURIComponent(
+          trimmedName
+        )}&password=${encodeURIComponent(trimmedPassword)}`
+      );
     } else {
+      // Show error message
       setMessage("名前と合言葉を入力してください");
     }
   };
 
   return (
-    <div>
-      <h1>名前と合言葉</h1>
+    <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h1>名前と合言葉を入力してください</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>名前:</label>
+        <div style={{ marginBottom: "10px" }}>
+          <label htmlFor="name">名前:</label>
           <input
+            id="name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            style={{
+              marginLeft: "10px",
+              padding: "5px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+            }}
           />
         </div>
-        <div>
-          <label>合言葉:</label>
+        <div style={{ marginBottom: "10px" }}>
+          <label htmlFor="password">合言葉:</label>
           <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            style={{
+              marginLeft: "10px",
+              padding: "5px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+            }}
           />
         </div>
-        <button type="submit">送信</button>
+        <button
+          type="submit"
+          style={{
+            padding: "5px 10px",
+            borderRadius: "4px",
+            border: "none",
+            background: "#007BFF",
+            color: "white",
+          }}
+        >
+          送信
+        </button>
       </form>
-      <p>{message}</p>
+      {message && (
+        <p
+          style={{
+            marginTop: "20px",
+            color: message.includes("入力してください") ? "red" : "green",
+          }}
+        >
+          {message}
+        </p>
+      )}
     </div>
   );
 };
