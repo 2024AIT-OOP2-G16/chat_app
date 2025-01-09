@@ -53,7 +53,8 @@ export const Chat = () => {
     ws.current = new WebSocket(URL);
     //メッセージの取得
     ws.current.onmessage = (event) => {
-      setMessages((prev) => [...prev, event.data]);
+      const parsedMessage = JSON.parse(event.data);
+      setMessages((prev) => [...prev, parsedMessage]);
     };
     ws.current.onclose = () => {
       console.log("WebSocket connection closed");
@@ -86,30 +87,21 @@ export const Chat = () => {
         <h1>Chat Room</h1>
         {error && <p style={{ color: "red" }}>Error: {error}</p>}
         {!error && (
-          <ul style={{ listStyleType: "none", padding: 0 }}>
+          <div>
             {chats.map((chat) => (
-              <li
-                key={chat.id}
-                style={{
-                  marginBottom: "10px",
-                  border: "1px solid #ccc",
-                  padding: "10px",
-                  borderRadius: "5px",
-                }}
-              >
-                <strong>Username:</strong> {chat.username} <br />
-                <strong>Keyword:</strong> {chat.keyword} <br />
-                <strong>Content:</strong> {chat.content}
-              </li>
+              <div key={chat.id}>
+                <div>Username:{chat.username} </div>
+                <div>Content: {chat.content}</div>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
       </div>
-      <h1>メッセージの表示</h1>
-      <div className="message-container">
+      <div>
         {messages.map((msg, index) => (
           <div key={index} className="message">
-            {msg}
+            <div>Username: {msg.username}</div>
+            <div>Content: {msg.content}</div>
           </div>
         ))}
       </div>
