@@ -24,3 +24,31 @@ def get_chat_by_keyword(name,keyword):
     # keywordが一致するデータを取得し、idで昇順に並べる
     chats = ChatModel.select().where(ChatModel.keyword == keyword).order_by(ChatModel.id.asc())
     return list(chats)
+
+#新たなチャットを保存する機能。
+def save_new_chat(username, keyword, content):
+    """
+    新しいチャットメッセージを保存する関数。
+
+    Args:
+        username (str): ユーザーネーム。
+        keyword (str): 部屋の識別子。
+        content (str): チャットメッセージ。
+
+    Returns:
+        ChatModel: 保存されたチャットオブジェクト。
+    """
+    try:
+        new_chat = ChatModel.create(
+            username=username,
+            keyword=keyword,
+            content=content
+        )
+        print(f"新しいチャットが保存されました: {new_chat.id}")
+        return new_chat
+    except Exception as e:
+        print(f"チャットの保存中にエラーが発生しました: {e}")
+        raise
+if __name__=="__main__":
+ testdata=save_new_chat("hanako,","aaa","サンプル")
+ print(testdata)
