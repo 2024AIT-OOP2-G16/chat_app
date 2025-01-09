@@ -4,35 +4,35 @@ from database import db
 class ChatModel(Model):
     id = AutoField() #id
     username = CharField(max_length=15)  #ユーザーネーム
-    keyword = CharField(max_length=30) #合言葉
+    room_id = CharField(max_length=30) #合言葉
     content = TextField() #会話内容
 
     class Meta:
         database = db  # 使用するデータベースを指定
 
-# 指定したkeywordが一致するデータを取得する関数
-def get_chat_by_keyword(name,keyword):
+# 指定したroom_idが一致するデータを取得する関数
+def get_chat_by_room_id(name,room_id):
     record, created = ChatModel.get_or_create(
-        keyword=keyword,
+        room_id=room_id,
         defaults={"username":name,"content":"Initial Chat"},
     )
     if created:
         print("新しい部屋を作成")
         return [record]
     else:
-        print("既存のkeyword")
-    # keywordが一致するデータを取得し、idで昇順に並べる
-    chats = ChatModel.select().where(ChatModel.keyword == keyword).order_by(ChatModel.id.asc())
+        print("既存のroom_id")
+    # room_idが一致するデータを取得し、idで昇順に並べる
+    chats = ChatModel.select().where(ChatModel.room_id == room_id).order_by(ChatModel.id.asc())
     return list(chats)
 
 #新たなチャットを保存する機能。
-def save_new_chat(username, keyword, content):
+def save_new_chat(username, room_id, content):
     """
     新しいチャットメッセージを保存する関数。
 
     Args:
         username (str): ユーザーネーム。
-        keyword (str): 部屋の識別子。
+        room_id (str): 部屋の識別子。
         content (str): チャットメッセージ。
 
     Returns:
@@ -41,7 +41,7 @@ def save_new_chat(username, keyword, content):
     try:
         new_chat = ChatModel.create(
             username=username,
-            keyword=keyword,
+            room_id=room_id,
             content=content
         )
         print(f"新しいチャットが保存されました: {new_chat.id}")
