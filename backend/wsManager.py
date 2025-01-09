@@ -1,5 +1,6 @@
 from fastapi import WebSocket
 from typing import List
+import json
 
 class ConnectionManager:
     def __init__(self):
@@ -16,5 +17,7 @@ class ConnectionManager:
         await websocket.send_text(message)
 
     async def broadcast(self, message: str):
+        # JSON文字列に変換
+        messages = json.dumps(message)  # 修正
         for connection in self.active_connections:
-            await connection.send_text(message)
+            await connection.send_text(messages)
