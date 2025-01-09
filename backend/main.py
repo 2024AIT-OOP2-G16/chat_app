@@ -1,8 +1,12 @@
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, WebSocket , WebSocketDisconnect ,Query
 from models import db, ChatModel, get_chat_by_keyword
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+from wsManager import ConnectionManager
 
 app = FastAPI()
+manager = ConnectionManager()
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -44,4 +48,20 @@ async def launch_chat(
         return response
     except Exception as e:
         print(f"Error occurred: {e}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        raise HTTPException(status_code=500, detail="Internal Server Error") 
+
+@app.websocket("/ws/{room_id}")
+async def websocket_endpoint(websocket: WebSocket, room_id: str):
+    await manager.connect(websocket)
+    try:
+        while True:
+            data = await websocket.receive_json()
+            print(f"Received data: {data}")
+            await manager.broadcast(data)
+            #名前とメッセージ取得
+            username = data["username"]
+            content = data["content"]
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
+        await manager.broadcast(f"id #{room_id} left the chat")    
+    
