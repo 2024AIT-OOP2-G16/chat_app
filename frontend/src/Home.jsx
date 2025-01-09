@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const [roomId, setRoomId] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -12,14 +12,14 @@ export const Home = () => {
 
     // Trim inputs to avoid unnecessary spaces
     const trimmedName = name.trim();
-    const trimmedPassword = password.trim();
+    const trimmedRoomId = roomId.trim();
 
-    if (trimmedName && trimmedPassword) {
+    if (trimmedName && trimmedRoomId) {
       // If both inputs are valid, navigate to Chat page with query parameters
       navigate(
         `/chat?name=${encodeURIComponent(
           trimmedName
-        )}&password=${encodeURIComponent(trimmedPassword)}`
+        )}&roomId=${encodeURIComponent(trimmedRoomId)}`
       );
     } else {
       // Show error message
@@ -29,7 +29,7 @@ export const Home = () => {
 
   return (
     <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1>名前と合言葉を入力してください</h1>
+      <h1>名前とRoomIdを入力してください</h1>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: "10px" }}>
           <label htmlFor="name">名前:</label>
@@ -47,12 +47,12 @@ export const Home = () => {
           />
         </div>
         <div style={{ marginBottom: "10px" }}>
-          <label htmlFor="password">合言葉:</label>
+          <label htmlFor="roomId">RoomId:</label>
           <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            id="roomId"
+            type="roomId"
+            value={roomId}
+            onChange={(e) => setRoomId(e.target.value)}
             style={{
               marginLeft: "10px",
               padding: "5px",
