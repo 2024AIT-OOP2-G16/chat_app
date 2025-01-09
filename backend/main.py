@@ -1,11 +1,10 @@
 from fastapi import FastAPI, HTTPException, WebSocket , WebSocketDisconnect ,Query
-from models import db, ChatModel, get_chat_by_keyword
-from fastapi.responses import HTMLResponse
+from models import db, ChatModel, get_chat_by_keyword, save_new_chat
 from fastapi.middleware.cors import CORSMiddleware
 from wsManager import ConnectionManager
 
-app = FastAPI()
-manager = ConnectionManager()
+app = FastAPI() # API作成
+manager = ConnectionManager()  # ConnectionManagerクラスのインスタンス化
 
 
 app.add_middleware(
@@ -59,8 +58,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
             print(f"Received data: {data}")
             await manager.broadcast(data)
             #名前とメッセージ取得
-            username = data["username"]
-            content = data["content"]
+            save_new_chat(data["username"],room_id,data["content"])
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         await manager.broadcast(f"id #{room_id} left the chat")    
