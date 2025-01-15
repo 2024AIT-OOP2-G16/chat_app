@@ -1,4 +1,38 @@
-## チャットアプリ
+## 実行環境の構築方法
+### backend側の環境構築
+pip install -r ./backend/requirements.txt
+pip install websockets
+
+### frontend側の環境構築
+### node.jsがインストールされているか確認
+node -v
+### インストールされていなかったら
+brew install node
+
+### 最新の状態に更新
+brew upgrade node
+
+### 環境構築
+cd ./frontend
+npm install -g npm
+npm i
+npm i react-router-dom
+
+# 実行
+## backend側でサーバーの立ち上げ
+### 1.backendディレクトリに移動
+cd ./backend 
+### 2.　サーバ立ち上げ
+uvicorn main:app --reload
+## react実行(frontend側でサーバ立ち上げ)
+### 1.frontendディレクトリに移動
+cd ./frontend 
+###　2.サーバ立ち上げ
+npm run dev
+
+----------------------------------------------------
+
+# チャットアプリ
 
 このプロジェクトは、**Python, FastAPI, React** を使用したウェブアプリケーションです。  
 名前と合言葉を入力してチャットルームに入り、リアルタイムでチャットができるアプリを開発します。
@@ -8,7 +42,6 @@
 ## 特徴
 - **チャット機能**  
   - 名前と合言葉で特定のチャットルームに参加可能
-  - テキストだけでなく、**画像、音声ファイル、URL** も送信可能
 - **チャット履歴**  
   - 各チャットルームのメッセージ履歴をデータベースに保存
 - **使いやすいUI**  
@@ -45,5 +78,3 @@
 | Reactを使う、問題の修正           | **K23099 花田歩夢**   |
 
 ---
-
-## プロジェクト構成
