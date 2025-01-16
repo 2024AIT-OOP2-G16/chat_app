@@ -6,7 +6,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f7f9fc;
-    background-image: url('chat_img.pdf');
+    background-image: url('chat_img.jpg');
     background-size: cover; /* 画像を画面全体に拡大 */
     background-repeat: no-repeat; /* 繰り返しを無効化 */
     background-position: center; /* 画像を中央に配置 */
@@ -30,7 +30,7 @@ body {
   /* タイトルスタイル */
  h1 {
   font-family: 'Caveat', cursive;
-  height: 3em;
+  height: 30px;
   font-size: 50px;
   color: black;
   margin-bottom: 20px;
@@ -39,71 +39,8 @@ body {
   padding: 10px; /* 内側の余白 */
   }
 
-  strong {
-    color: white;
-  }
 
-  li {
-    color: green;
-    background-color: black;
-  }
-  
-  /* フォームスタイル */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* ラベルスタイル */
-  label {
-    padding-top: 1em;
-    height: -20px;
-    font-size: 30px;
-    color: red;
-    font-weight: bold; /* 太字 */
-    padding: 10px; /* 内側の余白 */
-    text-align: left;
-  }
-  
-  /* 入力フィールドのスタイル */
-  input[type="text"],
-  input[type="roomId"] {
-    font-family: "Kokoro";
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-  
-  /* 入力フィールドのフォーカス時のスタイル */
-  input:focus {
-    font-family: "Kokoro";
-    outline: none;
-    border-color:  #ae11de;
-    box-shadow: 0 0 4px rgba(122, 3, 122, 0.5);
-  }
-  
-  /* ボタンのスタイル */
-  button[type="submit"] {
-    font-family: 'Caveat', cursive;
-    background: #ae11de;
-    color: #fff;
-    font-size: 16px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  /* ボタンのホバー時のスタイル */
-  button[type="submit"]:hover {
-    background: #0056b3;
-  }
-  
+
   /* エラーメッセージのスタイル */
   .error-message {
     margin-top: 10px;
@@ -116,4 +53,51 @@ body {
     margin-top: 10px;
     font-size: 14px;
     color: green;
+  }
+
+  .chat-messages {
+    height: 450px;
+    width: 600px;
+    border: 3px solid burlywood;
+    overflow-y: auto;
+    border-radius: 30px;
+    background-color: burlywood;
+  }
+
+  .username {
+    font-size: 24px;
+    color: brown;
+    font-family: "Kokoro";
+  }
+
+  .message {
+    height: auto;
+    width: 500px;
+    border: 3px solid white;
+    padding: 3%;
+    margin: 5%;
+    border-radius: 20px;
+    background-color: white;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-y: scroll;
+  }
+
+  .chat-input {
+    display: flex;
+    padding-top: 15px;
+    border-radius: 30px;
+    button{
+      font-size: 16px;
+      margin: 2%;
+      font-family: "Nico Moji";
+      background-color: burlywood;
+    }
+    input{
+      font-family: "Nico Moji";
+    }
+  }
+
+  .content {
+    font-family: "Nico Moji";
   }

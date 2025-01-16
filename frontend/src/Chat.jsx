@@ -85,35 +85,38 @@ export const Chat = () => {
   return (
     <>
     <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet"></link>
-      <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
+    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet"></link>
+      <div>
         <h1>Chat Room</h1>
-        {error && <p style={{ color: "red" }}>Error: {error}</p>}
-        {!error && (
-          <div>
-            {chats.map((chat) => (
-              <div key={chat.id}>
-                <div>Username:{chat.username} </div>
-                <div>Content: {chat.content}</div>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
-      <div>
-        {messages.map((msg, index) => (
-          <div key={index} className="message">
-            <div>Username: {msg.username}</div>
-            <div>Content: {msg.content}</div>
-          </div>
-        ))}
-      </div>
-      <div>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button onClick={sendMessage}>send</button>
+      <div className="chat-container">
+        <div className="chat-messages">
+          {error && <p style={{ color: "red" }}>Error: {error}</p>}
+          {!error && (
+            <div>
+              {chats.map((chat) => (
+                <div key={chat.id} className="message">
+                  <div className="username">{chat.username} </div>
+                  <div className="content">{chat.content}</div>
+                </div>
+              ))}
+            </div>
+          )}
+          {messages.map((msg, index) => (
+            <div key={index} className="message">
+              <div className="username">{msg.username}</div>
+              <div className="content">{msg.content}</div>
+            </div>
+          ))}
+        </div>
+        <div className="chat-input">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button onClick={sendMessage}>Send</button>
+        </div>
       </div>
     </>
   );
