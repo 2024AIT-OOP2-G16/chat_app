@@ -30,10 +30,11 @@ export const Home = () => {
 
   return (
     <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
+      <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet"></link>
       <h1>名前とRoomIdを入力してください</h1>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: "10px" }}>
-          <label htmlFor="name">名前:</label>
+          <label htmlFor="name">name:</label>
           <input
             id="name"
             type="text"

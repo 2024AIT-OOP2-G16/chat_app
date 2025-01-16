@@ -84,6 +84,7 @@ export const Chat = () => {
   };
   return (
     <>
+    <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet"></link>
       <div style={{ margin: "20px", fontFamily: "Arial, sans-serif" }}>
         <h1>Chat Room</h1>
         {error && <p style={{ color: "red" }}>Error: {error}</p>}

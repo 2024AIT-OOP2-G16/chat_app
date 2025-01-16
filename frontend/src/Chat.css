@@ -1,4 +1,6 @@
 /* 全体のスタイル */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -27,13 +29,14 @@ body {
   
   /* タイトルスタイル */
  h1 {
-    height: 3em;
-    font-size: 50px;
-    color: black;
-    margin-bottom: 20px;
-    margin-bottom: 20px;
-    font-weight: bold; /* 太字 */
-    padding: 10px; /* 内側の余白 */
+  font-family: 'Caveat', cursive;
+  height: 3em;
+  font-size: 50px;
+  color: black;
+  margin-bottom: 20px;
+  margin-bottom: 20px;
+  font-weight: bold; /* 太字 */
+  padding: 10px; /* 内側の余白 */
   }
 
   strong {
@@ -66,6 +69,7 @@ body {
   /* 入力フィールドのスタイル */
   input[type="text"],
   input[type="roomId"] {
+    font-family: "Kokoro";
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -76,6 +80,7 @@ body {
   
   /* 入力フィールドのフォーカス時のスタイル */
   input:focus {
+    font-family: "Kokoro";
     outline: none;
     border-color:  #ae11de;
     box-shadow: 0 0 4px rgba(122, 3, 122, 0.5);
@@ -83,6 +88,7 @@ body {
   
   /* ボタンのスタイル */
   button[type="submit"] {
+    font-family: 'Caveat', cursive;
     background: #ae11de;
     color: #fff;
     font-size: 16px;
