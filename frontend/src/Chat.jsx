@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import "./Chat.css";
 
 // クエリパラメータを取得するためのカスタムフック
 const useQuery = () => {
