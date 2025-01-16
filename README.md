@@ -1,35 +1,53 @@
 ## 実行環境の構築方法
 ### backend側の環境構築
-  - pip install -r ./backend/requirements.txt
-  - pip install websockets
+```bash
+pip install -r ./backend/requirements.txt
+pip install -r ./backend/websockets
+
+```  
 
 ### frontend側の環境構築
 ### node.jsがインストールされているか確認
-  - node -v
+```bash
+node -v
+```
 ### インストールされていなかったら
-  - brew install node
+```bash
+brew install node
+```
+
 
 ### 最新の状態に更新
-  - brew upgrade node
+```bash
+brew upgrade node
+```
 
 ### 環境構築
-  - cd ./frontend
-  - npm install -g npm
-  - npm i
-  - npm i react-router-dom
+```bash
+cd ./frontend
+npm i
+npm i react-router-dom
+```
 
 # 実行
 ## backend側でサーバーの立ち上げ
 ### 1.backendディレクトリに移動
-  - cd ./backend 
+```bash
+cd ./backend 
+```
 ### 2.　サーバ立ち上げ
-  - uvicorn main:app --reload
+```bash
+uvicorn main:app --reload
+```
 ## react実行(frontend側でサーバ立ち上げ)
 ### 1.frontendディレクトリに移動
-  - cd ./frontend 
-###　2.サーバ立ち上げ
-  - npm run dev
-
+```bash
+cd ./frontend 
+```
+### 2.サーバ立ち上げ
+```bash
+npm run dev
+```
 ----------------------------------------------------
 
 # チャットアプリ
