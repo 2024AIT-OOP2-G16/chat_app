@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Home.css";
 
 export const Home = () => {
   const [name, setName] = useState("");

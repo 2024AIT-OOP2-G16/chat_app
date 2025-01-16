@@ -1,0 +1,112 @@
+/* 全体のスタイル */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    background-image: url('chat_img.pdf');
+    background-size: cover; /* 画像を画面全体に拡大 */
+    background-repeat: no-repeat; /* 繰り返しを無効化 */
+    background-position: center; /* 画像を中央に配置 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* コンテナスタイル */
+  .container {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 20px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  /* タイトルスタイル */
+ h1 {
+    height: 20px;
+    font-size: 50px;
+    color: black;
+    margin-bottom: 20px;
+    margin-bottom: 20px;
+    font-weight: bold; /* 太字 */
+    padding: 10px; /* 内側の余白 */
+  }
+
+  strong {
+    color: white;
+  }
+
+  li {
+    color: green;
+    background-color: black;
+  }
+  
+  /* フォームスタイル */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* ラベルスタイル */
+  label {
+    height: -20px;
+    font-size: 30px;
+    color: red;
+    font-weight: bold; /* 太字 */
+    padding: 10px; /* 内側の余白 */
+    text-align: left;
+  }
+  
+  /* 入力フィールドのスタイル */
+  input[type="text"],
+  input[type="roomId"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  /* 入力フィールドのフォーカス時のスタイル */
+  input:focus {
+    outline: none;
+    border-color:  #ae11de;
+    box-shadow: 0 0 4px rgba(122, 3, 122, 0.5);
+  }
+  
+  /* ボタンのスタイル */
+  button[type="submit"] {
+    background: #ae11de;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  /* ボタンのホバー時のスタイル */
+  button[type="submit"]:hover {
+    background: #0056b3;
+  }
+  
+  /* エラーメッセージのスタイル */
+  .error-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+  }
+  
+  /* 成功メッセージのスタイル */
+  .success-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: green;
+  }
