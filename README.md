@@ -48,6 +48,10 @@ cd ./frontend
 ```bash
 npm run dev
 ```
+
+## backend、frontendでサーバ立ち上げ後、frontend実行時に表示されるURLにアクセス
+http://localhost:5173
+
 ----------------------------------------------------
 
 # チャットアプリ
