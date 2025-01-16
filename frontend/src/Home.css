@@ -54,6 +54,7 @@ body {
   
   /* ラベルスタイル */
   label {
+    padding-top: 1em;
     height: -20px;
     font-size: 30px;
     color: red;
